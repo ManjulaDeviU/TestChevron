@@ -1,0 +1,60 @@
+//AbstractEmployee.Java
+abstract public class AbstractEmployee
+{
+    protected String firstName;
+    protected String lastName;
+    protected int basicSalary;
+
+    public AbstractEmployee() { }  //Default Constructor
+    abstract void calculateNetSalary();  //Abstract Method
+    void getEmployeeDetails()
+    {
+        firstName = "Kamesh";
+        lastName = "Reddy";
+        basicSalary = 45000;
+    }
+    void displayEmployeeDetails()
+    {
+        System.out.println("Employee First Name:" + firstName);
+        System.out.println("Employee Last Name:" + lastName);
+        System.out.println("Employee Basic Salary:" + basicSalary);
+    }
+}
+
+class AbstractRegularEmployee extends AbstractEmployee
+{
+    private int regularEmployeeBasicSalary;
+    private int netSalaryOfRegularEmployee;
+    void getRegularEmployeeDetails(int regularEmployeeBasicSalary)
+    {
+        super.getEmployeeDetails();
+        this.regularEmployeeBasicSalary = regularEmployeeBasicSalary;
+    }
+    void calculateNetSalary() //Overriding Abstract Method
+    {
+        netSalary = regularEmployeeBasicSalary + 2500;
+    }
+
+    void displayRegularEmployeeDetails()
+    {
+        displayEmployeeDetails();
+        System.out.println("Regular Employee Salary :" + netSalary);
+    }
+}
+
+//EmployeeMain.java
+public class EmployeeMain
+{
+    public static void main(String[] args)
+    {
+         //Abstract Employee Class
+        //AbstractEmployee ae = new AbstractEmployee();
+        //ae.getEmployeeDetails("Hemanth","Reddy",0);
+
+        AbstractRegularEmployee hemanth = new AbstractRegularEmployee();
+        hemanth.getRegularEmployeeDetails(45000);
+        hemanth.calculateNetSalary();
+        hemanth.displayRegularEmployeeDetails();
+    }
+}
+
